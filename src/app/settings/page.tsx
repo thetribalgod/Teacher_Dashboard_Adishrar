@@ -2,9 +2,9 @@
 
 import React, { useState } from 'react';
 import { User, ArrowLeft, Settings, Save } from 'lucide-react';
+import Image from 'next/image';
 
 const TeacherSettingsPage: React.FC = () => {
-  const [darkMode, setDarkMode] = useState<boolean>(false);
   const [profileImage, setProfileImage] = useState<string>('/api/placeholder/100/100');
 
   const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -19,9 +19,9 @@ const TeacherSettingsPage: React.FC = () => {
   };
 
   return (
-    <div className={`min-h-screen ${darkMode ? 'bg-gray-900 text-white' : 'bg-gradient-to-br from-blue-50 via-white to-purple-50 text-gray-800'}`}>
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 text-gray-800">
       {/* Top Navigation Bar */}
-      <nav className={`px-6 py-4 ${darkMode ? 'bg-gray-800' : 'bg-white'} shadow-md flex justify-between items-center`}>
+      <nav className="px-6 py-4 bg-white shadow-md flex justify-between items-center">
         <div className="flex items-center gap-2">
           <button className="p-2 rounded-full hover:bg-blue-100 transition-colors">
             <ArrowLeft className="w-5 h-5" />
@@ -32,9 +32,11 @@ const TeacherSettingsPage: React.FC = () => {
         </div>
         <div className="flex items-center gap-4">
           <div className="relative">
-            <img
+            <Image
               src="/api/placeholder/40/40"
               alt="Teacher profile"
+              width={40}
+              height={40}
               className="w-10 h-10 rounded-full border-2 border-blue-500 object-cover"
             />
             <div className="absolute bottom-0 right-0 w-3 h-3 bg-green-500 rounded-full border-2 border-white"></div>
@@ -50,16 +52,18 @@ const TeacherSettingsPage: React.FC = () => {
         {/* Main Content Area */}
         <div className="flex-1">
           {/* Profile Settings */}
-          <div className={`rounded-xl shadow-lg ${darkMode ? 'bg-gray-800' : 'bg-white'} p-6`}>
+          <div className="rounded-xl shadow-lg bg-white p-6">
             <h2 className="text-2xl font-semibold mb-6 flex items-center gap-2">
               <User className="w-6 h-6 text-blue-600" /> Profile Settings
             </h2>
 
             <div className="mb-8 flex items-center">
               <div className="relative">
-                <img
+                <Image
                   src={profileImage}
                   alt="Profile"
+                  width={96}
+                  height={96}
                   className="w-24 h-24 rounded-full object-cover border-4 border-blue-100"
                 />
                 <button className="absolute bottom-0 right-0 bg-blue-600 text-white p-2 rounded-full shadow-lg">
