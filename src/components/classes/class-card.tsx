@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import { Camera, FileText, Edit, X, Video, Award, Users, Clock, ExternalLink, Upload, Check } from "lucide-react";
+import { Camera, FileText, Edit, X, Video, Award, Users, Clock, Upload, Check } from "lucide-react";
 import { motion } from "framer-motion";
 
 // Define an interface for classData
