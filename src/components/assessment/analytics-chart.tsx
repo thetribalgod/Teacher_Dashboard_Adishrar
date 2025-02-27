@@ -1,13 +1,13 @@
 "use client";
+
 import React, { useState, useEffect } from 'react';
 import {
-  BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer,
-  AreaChart, Area, LineChart, Line, PieChart, Pie, Cell, RadarChart, Radar, PolarGrid,
-  PolarAngleAxis, PolarRadiusAxis, ComposedChart
+  AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer,
+  PieChart, Pie, Cell, RadarChart, Radar, PolarGrid, PolarAngleAxis, PolarRadiusAxis, ComposedChart
 } from 'recharts';
 import {
   Clock, Users, CheckCircle, AlertCircle, TrendingUp, BookOpen,
-  Award, BarChart2, PieChart as PieChartIcon, Activity, PlusCircle
+  Award, BarChart2, PieChart as PieChartIcon, Activity
 } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/src/components/ui/card";
 
@@ -305,62 +305,62 @@ const Dashboard = () => {
           </Card>
 
           {/* Grade Distribution */}
-<Card className="shadow-xl border-0 rounded-xl bg-white overflow-hidden transform transition-all duration-500 hover:shadow-2xl" 
-      style={{ 
-        transitionDelay: '200ms',
-        opacity: animate ? 1 : 0,
-        transform: animate ? 'translateY(0)' : 'translateY(12px)'
-      }}>
-  <CardHeader className="pb-2">
-    <div className="flex items-center justify-between">
-      <div>
-        <CardTitle className="text-xl font-bold text-gray-800">Grade Distribution</CardTitle>
-        <CardDescription className="text-gray-500">Percentage of students by grade</CardDescription>
-      </div>
-      <div className="bg-purple-100 p-2 rounded-lg">
-        <PieChartIcon className="h-6 w-6 text-purple-600" />
-      </div>
-    </div>
-  </CardHeader>
-  <CardContent>
-    <div className="h-72 w-full flex items-center justify-center">
-      <ResponsiveContainer width="100%" height="100%">
-        <PieChart>
-          <Pie
-            data={gradeDistribution}
-            cx="50%"
-            cy="50%"
-            innerRadius={70}
-            outerRadius={110}
-            paddingAngle={2}
-            cornerRadius={3}
-            fill="#8884d8"
-            dataKey="value"
-            labelLine={false}
-            label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(0)}%`}
-            animationBegin={animate ? 200 : 9999}
-            animationDuration={1200}
-            isAnimationActive={true}
-          >
-            {gradeDistribution.map((entry, index) => (
-              <Cell key={`cell-${index}`} fill={entry.color} strokeWidth={1} />
-            ))}
-          </Pie>
-          <Tooltip
-            formatter={(value, name) => [`${value}%`, name]}
-            contentStyle={{
-              borderRadius: '12px',
-              boxShadow: '0 4px 16px rgba(0,0,0,0.08)',
-              border: 'none',
-              padding: '8px 12px',
-              backgroundColor: 'rgba(255, 255, 255, 0.97)'
-            }}
-          />
-        </PieChart>
-      </ResponsiveContainer>
-    </div>
-  </CardContent>
-</Card>
+          <Card className="shadow-xl border-0 rounded-xl bg-white overflow-hidden transform transition-all duration-500 hover:shadow-2xl"
+                style={{
+                  transitionDelay: '200ms',
+                  opacity: animate ? 1 : 0,
+                  transform: animate ? 'translateY(0)' : 'translateY(12px)'
+                }}>
+            <CardHeader className="pb-2">
+              <div className="flex items-center justify-between">
+                <div>
+                  <CardTitle className="text-xl font-bold text-gray-800">Grade Distribution</CardTitle>
+                  <CardDescription className="text-gray-500">Percentage of students by grade</CardDescription>
+                </div>
+                <div className="bg-purple-100 p-2 rounded-lg">
+                  <PieChartIcon className="h-6 w-6 text-purple-600" />
+                </div>
+              </div>
+            </CardHeader>
+            <CardContent>
+              <div className="h-72 w-full flex items-center justify-center">
+                <ResponsiveContainer width="100%" height="100%">
+                  <PieChart>
+                    <Pie
+                      data={gradeDistribution}
+                      cx="50%"
+                      cy="50%"
+                      innerRadius={70}
+                      outerRadius={110}
+                      paddingAngle={2}
+                      cornerRadius={3}
+                      fill="#8884d8"
+                      dataKey="value"
+                      labelLine={false}
+                      label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(0)}%`}
+                      animationBegin={animate ? 200 : 9999}
+                      animationDuration={1200}
+                      isAnimationActive={true}
+                    >
+                      {gradeDistribution.map((entry, index) => (
+                        <Cell key={`cell-${index}`} fill={entry.color} strokeWidth={1} />
+                      ))}
+                    </Pie>
+                    <Tooltip
+                      formatter={(value, name) => [`${value}%`, name]}
+                      contentStyle={{
+                        borderRadius: '12px',
+                        boxShadow: '0 4px 16px rgba(0,0,0,0.08)',
+                        border: 'none',
+                        padding: '8px 12px',
+                        backgroundColor: 'rgba(255, 255, 255, 0.97)'
+                      }}
+                    />
+                  </PieChart>
+                </ResponsiveContainer>
+              </div>
+            </CardContent>
+          </Card>
         </div>
 
         {/* Progress Over Time */}
@@ -432,7 +432,7 @@ const Dashboard = () => {
             </CardHeader>
             <CardContent>
               <div className="h-96">
-              <ResponsiveContainer width="100%" height="100%">
+                <ResponsiveContainer width="100%" height="100%">
                   <RadarChart outerRadius={150} width={730} height={400} data={skillsData}>
                     <PolarGrid />
                     <PolarAngleAxis dataKey="subject" />
